@@ -1,0 +1,71 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// Function to remove single-line comments
+string toRemovecmnt(string s)
+{
+    int n = s.length();
+    string res;
+    bool s_line = false;
+
+    for (int i = 0; i < n; ++i)
+    {
+        // Skip the comment part
+        if (s_line)
+        {
+            if (s[i] == '\n') // End of comment, stop skipping
+                s_line = false;
+            continue; // Skip remaining characters in the comment
+        }
+
+        // Check for the start of a comment (//)
+        if (i + 1 < n && s[i] == '/' && s[i + 1] == '/')
+        {
+            s_line = true;
+            i++; // Skip next character as it's part of the comment marker
+            continue;
+        }
+
+        // Otherwise, add the character to the result
+        res += s[i];
+    }
+
+    return res;
+}
+
+int main()
+{
+    ifstream filename("input.txt", ios::in); // Open for reading (not writing)
+    if (!filename) 
+    {
+        cout << "File not found" << endl;
+        return 1;
+    }
+
+    string line;
+    map<string, int> tokens;
+
+    // Read the file line by line
+    while (getline(filename, line))
+    {
+        // Remove comments from the line
+        string cleaned_line = toRemovecmnt(line);
+        
+        // Tokenize the cleaned line
+        stringstream ss(cleaned_line);
+        string token;
+        while (ss >> token) // Extract tokens (words)
+        {
+            tokens[token]++; // Count the frequency of each token
+        }
+    }
+
+    // Output the tokens and their frequencies
+    for (auto i : tokens)
+    {
+        cout << i.first << " " << i.second << endl;
+    }
+
+    filename.close();
+    return 0;
+}
