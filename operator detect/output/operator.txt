@@ -1,0 +1,8 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+int a=1,b=2;
+int z;
+if(z==a) cout<<"ans is 1"<<endl;
+else cout<<"error"<<endl;
+}
