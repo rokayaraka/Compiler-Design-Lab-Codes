@@ -1,0 +1,17 @@
+#include<bits/stdc++>
+using namespace std;
+
+int main(){
+int a=10;
+float b=20;
+float sum=a+b;
+cout<<sum<<endl;
+int arr[5]=1,2,3,4,5;
+for(int i=0;i<5;i++)
+{
+cout<<arr[i]<<" ";
+}
+cout<<endl;
+String str =" Hello world";
+cout<<str<<endl;
+}
