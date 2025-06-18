@@ -1,0 +1,15 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+int a,b,c,d;
+cin>>a>>b>>c>>d;
+sum(a,b,c,d);
+
+}
+void sum(int a, int b, int c, int d)
+{
+int res= a+b+c+d;
+cout<<res<<endl;
+}
